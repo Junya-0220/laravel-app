@@ -55,11 +55,11 @@ class UserController extends Controller
    */
   public function edit($id)
   {
-    $user       = User::find($id);
+    $user = User::find($id);
     $viewParams = [
       'user' => $user,
     ];
-    $this->authorize('view', $user); # 追加
+    $this->authorize('view', $user); 
     return view('user.edit', $viewParams);
   }
   /**
