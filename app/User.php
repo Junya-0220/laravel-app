@@ -44,4 +44,9 @@ class User extends Authenticatable
    {
      return $this->hasMany('App\Micropost');
    }
+
+   public function userSave($params){
+       $isRegist = $this->fill($params)->save();
+       return $isRegist;
+   }
 }
