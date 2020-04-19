@@ -15,10 +15,10 @@ class UserPolicy{
      * @param  \App\User  $user
      * @return mixed
      */
-    public function view(User $user)
-    {
-        return Auth::id() == $user->id;
-    }
+    public function view(User $model, User $user)
+   {
+       return $model->id == $user->id;
+   }
  
     /**
      * Determine whether the user can update the model.
@@ -26,8 +26,8 @@ class UserPolicy{
      * @param  \App\User  $user
      * @return mixed
      */
-    public function update(User $user)
+    public function update(User $model, User $user)
     {
-      return Auth::id() == $user->id;
+      return $model->id == $user->id;
     }
  }

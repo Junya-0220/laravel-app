@@ -32,7 +32,7 @@ class UserRequest extends FormRequest
         if($this->password_confirmation){
             $rules['name'] = 'required|max:20';
             $rules['email'] = 'required|email|unique:users';
-            $rules['name'] = 'required|min:6|confirmed';
+            $rules['password'] = 'required|min:6|confirmed';
         }
         return $rules;
     }
