@@ -29,4 +29,10 @@ class Micropost extends Model
      $microposts = Micropost::all()->sortByDesc('id');
      return $microposts;
    }
+
+   //投稿データを登録する
+   public function micropostSave($params){
+     $isSave = $this->fill($params)->save();
+     return $isSave;
+   }
 }

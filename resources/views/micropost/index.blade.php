@@ -25,14 +25,14 @@
            </tr>
          </thead>
          <tbody>
-           @foreach ($microposts as $micropost)
-             <tr>
-               <td>{{$micropost->user->name}}</td>
-               <td>{{$micropost->content}}</td>
-               <td>{{$micropost->created_at}}</td>
-             </tr>
-           @endforeach
-         </tbody>
+          @foreach ($microposts as $micropost)
+            <tr>
+              <td>{{$micropost->user->name}}</td>
+              <td>{!! nl2br(e($micropost->content)) !!}</td>
+              <td>{{$micropost->created_at}}</td>
+            </tr>
+          @endforeach
+        </tbody>
        </table>
      </div>
     </div>
