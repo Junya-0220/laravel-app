@@ -85,4 +85,12 @@ class UserController extends Controller
     }
     return redirect()->route('micropost.index')->with('flash_message', 'update success!!');
   }
+
+  public function index(){
+    $users = User::all();
+    $viewParams =[
+      'users'=>$users,
+    ];
+    return view('user.index',$viewParams);
+  }
 }
