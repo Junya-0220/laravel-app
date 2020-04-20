@@ -85,12 +85,29 @@ class UserController extends Controller
     }
     return redirect()->route('micropost.index')->with('flash_message', 'update success!!');
   }
-
+  //ユーザー一覧表示アクション
   public function index(){
     $users = User::all();
     $viewParams =[
       'users'=>$users,
     ];
     return view('user.index',$viewParams);
+  }
+  //ユーザ削除処理アクション
+  public function destroy($id){
+    $this->adminCheck();
+    $user = User::find($id);
+    if(!$user->delete()){
+      return redirect()->route('user.index')->with('error_message','Delete user failed');
+    }
+    return redirect()->route('user.index')->with('flash_message','delete seccess!!');
+  }
+
+  private function adminCheck(){
+    $adminFlg = Auth::user()->admin_flg;
+    if(!$adminFlg){
+      abort(404);
+    }
+    return true;
   }
 }
