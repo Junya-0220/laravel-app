@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Micropost;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,4 +24,9 @@ class Micropost extends Model
      'user_id',
      'content',
    ];
+
+   public static function getAll(){
+     $microposts = Micropost::all()->sortByDesc('id');
+     return $microposts;
+   }
 }
